@@ -15,7 +15,7 @@ struct TodoAppTutorialApp: App {
                 
                 // uikit을 swiftui로 가져온다
                 
-                ContentView()
+                TodosView()
                     .tabItem {
                         Image(systemName: "1.square.fill")
                         Text("SwiftUI")

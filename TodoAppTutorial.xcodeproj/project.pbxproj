@@ -8,25 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		ED9ADA382973D1B6009371AF /* TodoAppTutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9ADA372973D1B6009371AF /* TodoAppTutorialApp.swift */; };
-		ED9ADA3A2973D1B6009371AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9ADA392973D1B6009371AF /* ContentView.swift */; };
 		ED9ADA3C2973D1B6009371AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9ADA3B2973D1B6009371AF /* Assets.xcassets */; };
 		ED9ADA3F2973D1B6009371AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9ADA3E2973D1B6009371AF /* Preview Assets.xcassets */; };
 		ED9ADA472973DA85009371AF /* MainVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9ADA462973DA85009371AF /* MainVC.storyboard */; };
 		ED9ADA492973DAA0009371AF /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9ADA482973DAA0009371AF /* MainVC.swift */; };
 		EDC478D42973E63D00CFFB4D /* TodoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC478D32973E63D00CFFB4D /* TodoCell.xib */; };
 		EDC478D72973E8E200CFFB4D /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC478D62973E8E200CFFB4D /* TodoCell.swift */; };
+		EDFB79CF2973F4F4009C6EFA /* TodosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79CE2973F4F4009C6EFA /* TodosView.swift */; };
+		EDFB79D2297408B5009C6EFA /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D1297408B5009C6EFA /* Button+Style.swift */; };
+		EDFB79D529741038009C6EFA /* UISearchBarWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */; };
+		EDFB79D7297411A6009C6EFA /* TodoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D6297411A6009C6EFA /* TodoRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED9ADA342973D1B6009371AF /* TodoAppTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoAppTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9ADA372973D1B6009371AF /* TodoAppTutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAppTutorialApp.swift; sourceTree = "<group>"; };
-		ED9ADA392973D1B6009371AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ED9ADA3B2973D1B6009371AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED9ADA3E2973D1B6009371AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ED9ADA462973DA85009371AF /* MainVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainVC.storyboard; sourceTree = "<group>"; };
 		ED9ADA482973DAA0009371AF /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		EDC478D32973E63D00CFFB4D /* TodoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoCell.xib; sourceTree = "<group>"; };
 		EDC478D62973E8E200CFFB4D /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		EDFB79CE2973F4F4009C6EFA /* TodosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosView.swift; sourceTree = "<group>"; };
+		EDFB79D1297408B5009C6EFA /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
+		EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarWrapper.swift; sourceTree = "<group>"; };
+		EDFB79D6297411A6009C6EFA /* TodoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +65,12 @@
 		ED9ADA362973D1B6009371AF /* TodoAppTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				EDFB79D32974101C009C6EFA /* SwiftUi */,
+				EDFB79D02974089C009C6EFA /* Styles */,
 				ED9ADA452973DA73009371AF /* UIKit */,
 				ED9ADA372973D1B6009371AF /* TodoAppTutorialApp.swift */,
-				ED9ADA392973D1B6009371AF /* ContentView.swift */,
+				EDFB79CE2973F4F4009C6EFA /* TodosView.swift */,
+				EDFB79D6297411A6009C6EFA /* TodoRow.swift */,
 				ED9ADA3B2973D1B6009371AF /* Assets.xcassets */,
 				ED9ADA3D2973D1B6009371AF /* Preview Content */,
 			);
@@ -85,6 +94,22 @@
 				EDC478D62973E8E200CFFB4D /* TodoCell.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		EDFB79D02974089C009C6EFA /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				EDFB79D1297408B5009C6EFA /* Button+Style.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		EDFB79D32974101C009C6EFA /* SwiftUi */ = {
+			isa = PBXGroup;
+			children = (
+				EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */,
+			);
+			path = SwiftUi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,9 +184,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED9ADA3A2973D1B6009371AF /* ContentView.swift in Sources */,
+				EDFB79CF2973F4F4009C6EFA /* TodosView.swift in Sources */,
+				EDFB79D529741038009C6EFA /* UISearchBarWrapper.swift in Sources */,
 				ED9ADA492973DAA0009371AF /* MainVC.swift in Sources */,
+				EDFB79D2297408B5009C6EFA /* Button+Style.swift in Sources */,
 				ED9ADA382973D1B6009371AF /* TodoAppTutorialApp.swift in Sources */,
+				EDFB79D7297411A6009C6EFA /* TodoRow.swift in Sources */,
 				EDC478D72973E8E200CFFB4D /* TodoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
