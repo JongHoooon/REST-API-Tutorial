@@ -18,6 +18,9 @@
 		EDFB79D2297408B5009C6EFA /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D1297408B5009C6EFA /* Button+Style.swift */; };
 		EDFB79D529741038009C6EFA /* UISearchBarWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */; };
 		EDFB79D7297411A6009C6EFA /* TodoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D6297411A6009C6EFA /* TodoRow.swift */; };
+		EDFB79DA297450AD009C6EFA /* TodosAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D9297450AD009C6EFA /* TodosAPI.swift */; };
+		EDFB79DC29745317009C6EFA /* todosVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79DB29745317009C6EFA /* todosVM.swift */; };
+		EDFB79DF297455C4009C6EFA /* TodosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79DE297455C4009C6EFA /* TodosResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		EDFB79D1297408B5009C6EFA /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarWrapper.swift; sourceTree = "<group>"; };
 		EDFB79D6297411A6009C6EFA /* TodoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRow.swift; sourceTree = "<group>"; };
+		EDFB79D9297450AD009C6EFA /* TodosAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosAPI.swift; sourceTree = "<group>"; };
+		EDFB79DB29745317009C6EFA /* todosVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todosVM.swift; sourceTree = "<group>"; };
+		EDFB79DE297455C4009C6EFA /* TodosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,12 +71,13 @@
 		ED9ADA362973D1B6009371AF /* TodoAppTutorial */ = {
 			isa = PBXGroup;
 			children = (
-				EDFB79D32974101C009C6EFA /* SwiftUi */,
+				EDFB79DD297455B6009C6EFA /* Data */,
+				EDFB79D82974509C009C6EFA /* API */,
 				EDFB79D02974089C009C6EFA /* Styles */,
 				ED9ADA452973DA73009371AF /* UIKit */,
+				EDFB79D32974101C009C6EFA /* SwiftUi */,
+				EDFB79DB29745317009C6EFA /* todosVM.swift */,
 				ED9ADA372973D1B6009371AF /* TodoAppTutorialApp.swift */,
-				EDFB79CE2973F4F4009C6EFA /* TodosView.swift */,
-				EDFB79D6297411A6009C6EFA /* TodoRow.swift */,
 				ED9ADA3B2973D1B6009371AF /* Assets.xcassets */,
 				ED9ADA3D2973D1B6009371AF /* Preview Content */,
 			);
@@ -107,9 +114,27 @@
 		EDFB79D32974101C009C6EFA /* SwiftUi */ = {
 			isa = PBXGroup;
 			children = (
+				EDFB79CE2973F4F4009C6EFA /* TodosView.swift */,
+				EDFB79D6297411A6009C6EFA /* TodoRow.swift */,
 				EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */,
 			);
 			path = SwiftUi;
+			sourceTree = "<group>";
+		};
+		EDFB79D82974509C009C6EFA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EDFB79D9297450AD009C6EFA /* TodosAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		EDFB79DD297455B6009C6EFA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EDFB79DE297455C4009C6EFA /* TodosResponse.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,13 +209,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDFB79DF297455C4009C6EFA /* TodosResponse.swift in Sources */,
 				EDFB79CF2973F4F4009C6EFA /* TodosView.swift in Sources */,
 				EDFB79D529741038009C6EFA /* UISearchBarWrapper.swift in Sources */,
 				ED9ADA492973DAA0009371AF /* MainVC.swift in Sources */,
 				EDFB79D2297408B5009C6EFA /* Button+Style.swift in Sources */,
+				EDFB79DA297450AD009C6EFA /* TodosAPI.swift in Sources */,
 				ED9ADA382973D1B6009371AF /* TodoAppTutorialApp.swift in Sources */,
 				EDFB79D7297411A6009C6EFA /* TodoRow.swift in Sources */,
 				EDC478D72973E8E200CFFB4D /* TodoCell.swift in Sources */,
+				EDFB79DC29745317009C6EFA /* todosVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

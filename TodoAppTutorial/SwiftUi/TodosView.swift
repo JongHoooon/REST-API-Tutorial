@@ -10,6 +10,8 @@ import SwiftUI
 
 struct TodosView: View {
     
+    @StateObject var todosVM: TodosVM = TodosVM()
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -67,8 +69,6 @@ struct TodosView: View {
                 .buttonStyle(MyDefaultButtonStyle())
             }
         }
-        
-        
     }
     
     /// second 헤더
