@@ -11,6 +11,10 @@
 		ED9ADA3A2973D1B6009371AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9ADA392973D1B6009371AF /* ContentView.swift */; };
 		ED9ADA3C2973D1B6009371AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9ADA3B2973D1B6009371AF /* Assets.xcassets */; };
 		ED9ADA3F2973D1B6009371AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9ADA3E2973D1B6009371AF /* Preview Assets.xcassets */; };
+		ED9ADA472973DA85009371AF /* MainVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9ADA462973DA85009371AF /* MainVC.storyboard */; };
+		ED9ADA492973DAA0009371AF /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9ADA482973DAA0009371AF /* MainVC.swift */; };
+		EDC478D42973E63D00CFFB4D /* TodoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC478D32973E63D00CFFB4D /* TodoCell.xib */; };
+		EDC478D72973E8E200CFFB4D /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC478D62973E8E200CFFB4D /* TodoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		ED9ADA392973D1B6009371AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ED9ADA3B2973D1B6009371AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED9ADA3E2973D1B6009371AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ED9ADA462973DA85009371AF /* MainVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainVC.storyboard; sourceTree = "<group>"; };
+		ED9ADA482973DAA0009371AF /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		EDC478D32973E63D00CFFB4D /* TodoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoCell.xib; sourceTree = "<group>"; };
+		EDC478D62973E8E200CFFB4D /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +59,7 @@
 		ED9ADA362973D1B6009371AF /* TodoAppTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				ED9ADA452973DA73009371AF /* UIKit */,
 				ED9ADA372973D1B6009371AF /* TodoAppTutorialApp.swift */,
 				ED9ADA392973D1B6009371AF /* ContentView.swift */,
 				ED9ADA3B2973D1B6009371AF /* Assets.xcassets */,
@@ -65,6 +74,17 @@
 				ED9ADA3E2973D1B6009371AF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ED9ADA452973DA73009371AF /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				ED9ADA462973DA85009371AF /* MainVC.storyboard */,
+				ED9ADA482973DAA0009371AF /* MainVC.swift */,
+				EDC478D32973E63D00CFFB4D /* TodoCell.xib */,
+				EDC478D62973E8E200CFFB4D /* TodoCell.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +145,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED9ADA472973DA85009371AF /* MainVC.storyboard in Resources */,
 				ED9ADA3F2973D1B6009371AF /* Preview Assets.xcassets in Resources */,
 				ED9ADA3C2973D1B6009371AF /* Assets.xcassets in Resources */,
+				EDC478D42973E63D00CFFB4D /* TodoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +160,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED9ADA3A2973D1B6009371AF /* ContentView.swift in Sources */,
+				ED9ADA492973DAA0009371AF /* MainVC.swift in Sources */,
 				ED9ADA382973D1B6009371AF /* TodoAppTutorialApp.swift in Sources */,
+				EDC478D72973E8E200CFFB4D /* TodoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,7 +273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -275,6 +299,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,6 +329,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
