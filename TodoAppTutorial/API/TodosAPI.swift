@@ -21,13 +21,26 @@ enum TodosAPI {
     #endif
     
     enum ApiError: Error {
-        case parsingError
         case noContent
         case decodingError
+        case unauthorized
         case badStatus(code: Int)
+        case unknown(_ error: Error?)
+        
+        var info: String {
+            switch self {
+            case .noContent:            return "데이터가 없습니다."
+            case .decodingError:        return "디코딩 에러입니다."
+            case .unauthorized:         return "인증되지 않은 사용자 입니다.."
+            case let .badStatus(code):  return "에러 상태코드: \(code)"
+            case .unknown(let error):   return "알 수 없는 에러입니다.\n\(String(describing: error))"
+            }
+        }
     }
     
     static func fetchTodos(page: Int = 1, completion: @escaping (Result<TodosResponse, ApiError>) -> Void) {
+        
+        
         
         // 1. urlRequest를 만든다.
         
@@ -39,14 +52,44 @@ enum TodosAPI {
         
         // 2. urlSession 으로 API를 호출한다.
         
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
+            
+            if let error = error {
+                return completion(.failure(ApiError.unknown(error)))
+            }
+            
+            guard let httpResponse = urlResponse as? HTTPURLResponse else {
+                
+                print("bad status code")
+                return completion(.failure(.unknown(nil)))
+            }
+            
+            switch httpResponse.statusCode {
+            case 401:
+                return completion(.failure(ApiError.unauthorized))
+            default:
+                print("default")
+            }
+            
+            if !(200...299).contains(httpResponse.statusCode) {
+                return completion(.failure(.badStatus(code: httpResponse.statusCode)))
+            }
+            
+            
             
             if let jsonData = data {
                 do {
                     // JSON -> Struct로 변경 즉 디코딩 즉 데이터 파싱
                     let todosResponse = try JSONDecoder().decode(TodosResponse.self, from: jsonData)
-                    let modelObjects = todosResponse.data
-                    print("topLevelModel:\(todosResponse.data)")
+                    let todos = todosResponse.data
+                    print("topLevelModel:\(todosResponse)")
+                    
+                    // 상태 코드는 200인데 파싱한 데이터에 따라서 예외 처리
+                    guard let todos = todos,
+                          !todos.isEmpty else {
+                        return completion(.failure(.noContent))
+                    }
+                
                     completion(.success(todosResponse))
                 } catch {
                     completion(.failure(.decodingError))
