@@ -14,6 +14,7 @@
 		ED9ADA492973DAA0009371AF /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9ADA482973DAA0009371AF /* MainVC.swift */; };
 		EDC478D42973E63D00CFFB4D /* TodoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC478D32973E63D00CFFB4D /* TodoCell.xib */; };
 		EDC478D72973E8E200CFFB4D /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC478D62973E8E200CFFB4D /* TodoCell.swift */; };
+		EDD6DD472975892F007724DD /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DD462975892F007724DD /* URL+Extension.swift */; };
 		EDFB79CF2973F4F4009C6EFA /* TodosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79CE2973F4F4009C6EFA /* TodosView.swift */; };
 		EDFB79D2297408B5009C6EFA /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D1297408B5009C6EFA /* Button+Style.swift */; };
 		EDFB79D529741038009C6EFA /* UISearchBarWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */; };
@@ -32,6 +33,7 @@
 		ED9ADA482973DAA0009371AF /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		EDC478D32973E63D00CFFB4D /* TodoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoCell.xib; sourceTree = "<group>"; };
 		EDC478D62973E8E200CFFB4D /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		EDD6DD462975892F007724DD /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		EDFB79CE2973F4F4009C6EFA /* TodosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosView.swift; sourceTree = "<group>"; };
 		EDFB79D1297408B5009C6EFA /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarWrapper.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		ED9ADA362973D1B6009371AF /* TodoAppTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				EDD6DD4529758914007724DD /* Extensions */,
 				EDFB79DD297455B6009C6EFA /* Data */,
 				EDFB79D82974509C009C6EFA /* API */,
 				EDFB79D02974089C009C6EFA /* Styles */,
@@ -101,6 +104,14 @@
 				EDC478D62973E8E200CFFB4D /* TodoCell.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		EDD6DD4529758914007724DD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EDD6DD462975892F007724DD /* URL+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EDFB79D02974089C009C6EFA /* Styles */ = {
@@ -212,6 +223,7 @@
 				EDFB79DF297455C4009C6EFA /* TodosResponse.swift in Sources */,
 				EDFB79CF2973F4F4009C6EFA /* TodosView.swift in Sources */,
 				EDFB79D529741038009C6EFA /* UISearchBarWrapper.swift in Sources */,
+				EDD6DD472975892F007724DD /* URL+Extension.swift in Sources */,
 				ED9ADA492973DAA0009371AF /* MainVC.swift in Sources */,
 				EDFB79D2297408B5009C6EFA /* Button+Style.swift in Sources */,
 				EDFB79DA297450AD009C6EFA /* TodosAPI.swift in Sources */,

@@ -12,7 +12,8 @@ class TodosVM: ObservableObject {
     
     init() {
         print("DEBUG -", #fileID, #function, #line)
-        TodosAPI.fetchTodos { [weak self] result in
+        
+        TodosAPI.searchTodos(searchTerm: "빡코딩") { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let todosResponse):
@@ -23,6 +24,31 @@ class TodosVM: ObservableObject {
                 self.handleError2(failure)
             }
         }
+        
+//        TodosAPI.fetchATodo(id: 1500, completion: { [weak self] result in
+//            guard let self = self else { return }
+//
+//            switch result {
+//            case .success(let aTodoResponse):
+//                print("TodosVM - aTodoResponse: \(aTodoResponse)")
+//            case .failure(let failure):
+//                print("TodosVM - failure: \(failure)")
+//                self.handleError(failure)
+//                self.handleError2(failure)
+//            }
+//        })
+        
+//        TodosAPI.fetchTodos { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let todosResponse):
+//                print("TodosVM - todosResponse: \(todosResponse)")
+//            case .failure(let failure):
+//                print("TodosVM - failure: \(failure)")
+//                self.handleError(failure)
+//                self.handleError2(failure)
+//            }
+//        }
     } // init
     
     private func handleError2(_ error: Error) {

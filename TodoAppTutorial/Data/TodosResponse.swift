@@ -21,6 +21,12 @@ struct BaseListResponse<T: Decodable>: Decodable {
 //    let makeError: String
 }
 
+struct BaseResponse<T: Decodable>: Decodable {
+    let data: T?
+    let message: String?
+//    let code: String?
+}
+
 struct Todo: Codable {
     let id: Int?
     let title: String?
