@@ -38,7 +38,7 @@ enum TodosAPI {
         }
     }
     
-    static func fetchTodos(page: Int = 1, completion: @escaping (Result<TodosResponse, ApiError>) -> Void) {
+    static func fetchTodos(page: Int = 1, completion: @escaping (Result<BaseListResponse<Todo>, ApiError>) -> Void) {
         
         
         
@@ -80,9 +80,9 @@ enum TodosAPI {
             if let jsonData = data {
                 do {
                     // JSON -> Struct로 변경 즉 디코딩 즉 데이터 파싱
-                    let todosResponse = try JSONDecoder().decode(TodosResponse.self, from: jsonData)
-                    let todos = todosResponse.data
-                    print("topLevelModel:\(todosResponse)")
+                    let listResponse = try JSONDecoder().decode(BaseListResponse<Todo>.self, from: jsonData)
+                    let todos = listResponse.data
+                    print("topLevelModel:\(listResponse)")
                     
                     // 상태 코드는 200인데 파싱한 데이터에 따라서 예외 처리
                     guard let todos = todos,
@@ -90,7 +90,7 @@ enum TodosAPI {
                         return completion(.failure(.noContent))
                     }
                 
-                    completion(.success(todosResponse))
+                    completion(.success(listResponse))
                 } catch {
                     completion(.failure(.decodingError))
                 }
