@@ -6,11 +6,10 @@
 //
 
 import Foundation
+import MultipartForm
 
 enum TodosAPI {
-//    static let baseURL: String = {
-//        return
-//    }
+
     
     static let version = "v1"
     
@@ -229,6 +228,81 @@ enum TodosAPI {
                     }
                 
                     completion(.success(listResponse))
+                } catch {
+                    completion(.failure(.decodingError))
+                }
+            }
+        }.resume()
+        
+        // 3. API 호출에 대한 응답을 받는다.
+    }
+    
+    
+    /// 할 일 추가하기
+    /// - Parameters:
+    ///   - title: 할일 타이틀
+    ///   - isDone: 할일 완료여부
+    ///   - completion: 응답 결과
+    static func addATodo(title: String,
+                         isDone: Bool = false,
+                         completion: @escaping (Result<BaseResponse<Todo>, ApiError>) -> Void) {
+        
+        // 1. urlRequest를 만든다.
+        
+        let urlString = baseURL + "/todos"
+        guard let url = URL(string: urlString) else {
+            return completion(.failure(.notAllowedUrl))
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "accept")
+        
+        let form = MultipartForm(parts: [
+            MultipartForm.Part(name: "title", value: title),
+            MultipartForm.Part(name: "is_done", value: "\(isDone)")
+        ])
+        
+        print("form: \(form.contentType)")
+        
+        urlRequest.addValue(form.contentType, forHTTPHeaderField: "Content-Type")
+        
+        urlRequest.httpBody = form.bodyData
+        
+        // 2. urlSession 으로 API를 호출한다.
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
+            
+            if let error = error {
+                return completion(.failure(ApiError.unknown(error)))
+            }
+            
+            guard let httpResponse = urlResponse as? HTTPURLResponse else {
+                print("bad status code")
+                return completion(.failure(.unknown(nil)))
+            }
+            
+            switch httpResponse.statusCode {
+            case 401:
+                return completion(.failure(.unauthorized))
+            case 204:
+                return completion(.failure(.noContent))
+            default:
+                print("default")
+            }
+            
+            if !(200...299).contains(httpResponse.statusCode) {
+                return completion(.failure(.badStatus(code: httpResponse.statusCode)))
+            }
+            
+            if let jsonData = data {
+                do {
+                    // JSON -> Struct로 변경 즉 디코딩 즉 데이터 파싱
+                    let baseResponse = try
+                        JSONDecoder().decode(BaseResponse<Todo>.self,
+                                             from: jsonData)
+                
+                    completion(.success(baseResponse))
                 } catch {
                     completion(.failure(.decodingError))
                 }

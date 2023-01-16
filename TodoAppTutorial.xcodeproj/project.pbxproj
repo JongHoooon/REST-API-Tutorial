@@ -15,6 +15,7 @@
 		EDC478D42973E63D00CFFB4D /* TodoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC478D32973E63D00CFFB4D /* TodoCell.xib */; };
 		EDC478D72973E8E200CFFB4D /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC478D62973E8E200CFFB4D /* TodoCell.swift */; };
 		EDD6DD472975892F007724DD /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DD462975892F007724DD /* URL+Extension.swift */; };
+		EDD6DD4A2975BF90007724DD /* MultipartForm in Frameworks */ = {isa = PBXBuildFile; productRef = EDD6DD492975BF90007724DD /* MultipartForm */; };
 		EDFB79CF2973F4F4009C6EFA /* TodosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79CE2973F4F4009C6EFA /* TodosView.swift */; };
 		EDFB79D2297408B5009C6EFA /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D1297408B5009C6EFA /* Button+Style.swift */; };
 		EDFB79D529741038009C6EFA /* UISearchBarWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */; };
@@ -48,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDD6DD4A2975BF90007724DD /* MultipartForm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +166,9 @@
 			dependencies = (
 			);
 			name = TodoAppTutorial;
+			packageProductDependencies = (
+				EDD6DD492975BF90007724DD /* MultipartForm */,
+			);
 			productName = TodoAppTutorial;
 			productReference = ED9ADA342973D1B6009371AF /* TodoAppTutorial.app */;
 			productType = "com.apple.product-type.application";
@@ -192,6 +197,9 @@
 				Base,
 			);
 			mainGroup = ED9ADA2B2973D1B6009371AF;
+			packageReferences = (
+				EDD6DD482975BF90007724DD /* XCRemoteSwiftPackageReference "MultipartForm" */,
+			);
 			productRefGroup = ED9ADA352973D1B6009371AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -433,6 +441,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EDD6DD482975BF90007724DD /* XCRemoteSwiftPackageReference "MultipartForm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davbeck/MultipartForm.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EDD6DD492975BF90007724DD /* MultipartForm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EDD6DD482975BF90007724DD /* XCRemoteSwiftPackageReference "MultipartForm" */;
+			productName = MultipartForm;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ED9ADA2C2973D1B6009371AF /* Project object */;
 }
