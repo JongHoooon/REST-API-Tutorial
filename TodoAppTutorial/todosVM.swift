@@ -13,7 +13,7 @@ class TodosVM: ObservableObject {
     init() {
         print("DEBUG -", #fileID, #function, #line)
         
-        TodosAPI.addATodo(title: "오늘도 빡코딩", isDone: true, completion: { [weak self] result in
+        TodosAPI.editTodoJson(id: 2036, title: "오늘도 빡코딩1212", isDone: false, completion: { [weak self] result in
             guard let self = self else { return }
             
             switch result {

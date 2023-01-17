@@ -21,6 +21,7 @@ enum TodosAPI {
     
     enum ApiError: Error {
         case noContent
+        case jsonEncoding
         case decodingError
         case unauthorized
         case notAllowedUrl
@@ -30,6 +31,7 @@ enum TodosAPI {
         var info: String {
             switch self {
             case .noContent:            return "데이터가 없습니다."
+            case .jsonEncoding:         return "유효한 json 형식이 아닙니다."
             case .decodingError:        return "디코딩 에러입니다."
             case .unauthorized:         return "인증되지 않은 사용자 입니다."
             case .notAllowedUrl:        return "올바른 URL 형식이 아닙니다."
@@ -311,4 +313,149 @@ enum TodosAPI {
         
         // 3. API 호출에 대한 응답을 받는다.
     }
+        
+    static func addATodoJson(title: String,
+                             isDone: Bool = false,
+                             completion: @escaping (Result<BaseResponse<Todo>, ApiError>) -> Void) {
+        
+        // 1. urlRequest를 만든다.
+        
+        let urlString = baseURL + "/todos-json"
+        guard let url = URL(string: urlString) else {
+            return completion(.failure(.notAllowedUrl))
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "accept")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let requestParams: [String: Any] = ["title": title,
+                                            "is_done": "\(isDone)"]
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: requestParams,
+                                                      options: [.prettyPrinted])
+            urlRequest.httpBody = jsonData
+        } catch {
+            return completion(.failure(.jsonEncoding))
+        }
+        
+        
+        // 2. urlSession 으로 API를 호출한다.
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
+            
+            if let error = error {
+                return completion(.failure(ApiError.unknown(error)))
+            }
+            
+            guard let httpResponse = urlResponse as? HTTPURLResponse else {
+                print("bad status code")
+                return completion(.failure(.unknown(nil)))
+            }
+            
+            switch httpResponse.statusCode {
+            case 401:
+                return completion(.failure(.unauthorized))
+            case 204:
+                return completion(.failure(.noContent))
+            default:
+                print("default")
+            }
+            
+            if !(200...299).contains(httpResponse.statusCode) {
+                return completion(.failure(.badStatus(code: httpResponse.statusCode)))
+            }
+            
+            if let jsonData = data {
+                do {
+                    // JSON -> Struct로 변경 즉 디코딩 즉 데이터 파싱
+                    let baseResponse = try
+                        JSONDecoder().decode(BaseResponse<Todo>.self,
+                                             from: jsonData)
+                
+                    completion(.success(baseResponse))
+                } catch {
+                    completion(.failure(.decodingError))
+                }
+            }
+        }.resume()
+        
+        // 3. API 호출에 대한 응답을 받는다.
+    }
+
+    static func editTodoJson(id: Int,
+                             title: String,
+                             isDone: Bool = false,
+                             completion: @escaping (Result<BaseResponse<Todo>, ApiError>) -> Void) {
+        
+        // 1. urlRequest를 만든다.
+        
+        let urlString = baseURL + "/todos-json/\(id)"
+        guard let url = URL(string: urlString) else {
+            return completion(.failure(.notAllowedUrl))
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "accept")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let requestParams: [String: Any] = ["title": title,
+                                            "is_done": "\(isDone)"]
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: requestParams,
+                                                      options: [.prettyPrinted])
+            urlRequest.httpBody = jsonData
+        } catch {
+            return completion(.failure(.jsonEncoding))
+        }
+        
+        
+        // 2. urlSession 으로 API를 호출한다.
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
+            
+            if let error = error {
+                return completion(.failure(ApiError.unknown(error)))
+            }
+            
+            guard let httpResponse = urlResponse as? HTTPURLResponse else {
+                print("bad status code")
+                return completion(.failure(.unknown(nil)))
+            }
+            
+            switch httpResponse.statusCode {
+            case 401:
+                return completion(.failure(.unauthorized))
+            case 204:
+                return completion(.failure(.noContent))
+            default:
+                print("default")
+            }
+            
+            if !(200...299).contains(httpResponse.statusCode) {
+                return completion(.failure(.badStatus(code: httpResponse.statusCode)))
+            }
+            
+            if let jsonData = data {
+                do {
+                    // JSON -> Struct로 변경 즉 디코딩 즉 데이터 파싱
+                    let baseResponse = try
+                        JSONDecoder().decode(BaseResponse<Todo>.self,
+                                             from: jsonData)
+                
+                    completion(.success(baseResponse))
+                } catch {
+                    completion(.failure(.decodingError))
+                }
+            }
+        }.resume()
+        
+        // 3. API 호출에 대한 응답을 받는다.
+    }
+    
+    
 }
