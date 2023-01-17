@@ -24,7 +24,7 @@ struct TodoRow: View {
                 Toggle(isOn: $isSelected, label: {
                     EmptyView()
                 })
-                .background(Color.gray)
+//                .background(Color.gray)
                 .frame(width: 80)
             }
             
