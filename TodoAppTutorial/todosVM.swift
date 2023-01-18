@@ -13,18 +13,31 @@ class TodosVM: ObservableObject {
     init() {
         print("DEBUG -", #fileID, #function, #line)
         
-        TodosAPI.deleteATodo(id: 2035, completion: { [weak self] result in
+        TodosAPI.addATodoAndFetchTodos(title: "연쇄ㄹㄹㄹ",
+                                       completion: { [weak self] result in
             guard let self = self else { return }
-            
+
             switch result {
-            case .success(let aTodoResponse):
-                print("TodosVM - addATodo - aTodoResponse: \(aTodoResponse)")
-            case .failure(let failure):
-                print("TodosVM - addATodo - failure: \(failure)")
-                self.handleError(failure)
-                self.handleError2(failure)
+            case .success(let todolistResponse):
+                print("TodosVM - todolist response: \(todolistResponse)")
+            case .failure(let error):
+                print("failure")
+                self.handleError(error)
             }
         })
+        
+//        TodosAPI.deleteATodo(id: 2030, completion: { [weak self] result in
+//            guard let self = self else { return }
+//
+//            switch result {
+//            case .success(let aTodoResponse):
+//                print("TodosVM - addATodo - aTodoResponse: \(aTodoResponse)")
+//            case .failure(let failure):
+//                print("TodosVM - addATodo - failure: \(failure)")
+//                self.handleError(failure)
+//                self.handleError2(failure)
+//            }
+//        })
         
 //        TodosAPI.searchTodos(searchTerm: "빡코딩") { [weak self] result in
 //            guard let self = self else { return }

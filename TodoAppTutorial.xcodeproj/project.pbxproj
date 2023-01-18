@@ -17,6 +17,7 @@
 		EDD6DD472975892F007724DD /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD6DD462975892F007724DD /* URL+Extension.swift */; };
 		EDD6DD4A2975BF90007724DD /* MultipartForm in Frameworks */ = {isa = PBXBuildFile; productRef = EDD6DD492975BF90007724DD /* MultipartForm */; };
 		EDFA055C29763E5C000E3AA6 /* URLRequest+Extentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFA055B29763E5C000E3AA6 /* URLRequest+Extentsion.swift */; };
+		EDFA05842977D6D1000E3AA6 /* TodosAPI+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFA05832977D6D1000E3AA6 /* TodosAPI+Closure.swift */; };
 		EDFB79CF2973F4F4009C6EFA /* TodosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79CE2973F4F4009C6EFA /* TodosView.swift */; };
 		EDFB79D2297408B5009C6EFA /* Button+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D1297408B5009C6EFA /* Button+Style.swift */; };
 		EDFB79D529741038009C6EFA /* UISearchBarWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */; };
@@ -37,6 +38,7 @@
 		EDC478D62973E8E200CFFB4D /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		EDD6DD462975892F007724DD /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		EDFA055B29763E5C000E3AA6 /* URLRequest+Extentsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extentsion.swift"; sourceTree = "<group>"; };
+		EDFA05832977D6D1000E3AA6 /* TodosAPI+Closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodosAPI+Closure.swift"; sourceTree = "<group>"; };
 		EDFB79CE2973F4F4009C6EFA /* TodosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosView.swift; sourceTree = "<group>"; };
 		EDFB79D1297408B5009C6EFA /* Button+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Style.swift"; sourceTree = "<group>"; };
 		EDFB79D429741038009C6EFA /* UISearchBarWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarWrapper.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				EDFB79D9297450AD009C6EFA /* TodosAPI.swift */,
+				EDFA05832977D6D1000E3AA6 /* TodosAPI+Closure.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				EDFB79D7297411A6009C6EFA /* TodoRow.swift in Sources */,
 				EDC478D72973E8E200CFFB4D /* TodoCell.swift in Sources */,
 				EDFB79DC29745317009C6EFA /* todosVM.swift in Sources */,
+				EDFA05842977D6D1000E3AA6 /* TodosAPI+Closure.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +303,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -353,6 +358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
