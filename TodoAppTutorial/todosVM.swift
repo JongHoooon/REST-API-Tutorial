@@ -7,20 +7,38 @@
 
 import Foundation
 import Combine
+import RxSwift
 
 class TodosVM: ObservableObject {
+    
+    var disposeBag = DisposeBag()
     
     init() {
         print("DEBUG -", #fileID, #function, #line)
         
-        TodosAPI.fetchSelectedTodos(selectedTodoIds: [2068], completion: { result in
-            switch result {
-            case .success(let data):
-                print("TodosVM - fetchSelectedTodos : data: \(data)")
-            case .failure(let failure):
-                print("TodosVM - fetchSelectedTods : failure: \(failure)")
-            }
-        })
+        TodosAPI.fetchTodosWithObservable()
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
+                
+                switch result {
+                case .failure(let failure):
+                    self.handleError(failure)
+                case .success(let response):
+                    print("TodosVM - fetchTodosWithObservable : response: \(response)")
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        
+//        TodosAPI.fetchSelectedTodos(selectedTodoIds: [2068], completion: { result in
+//            switch result {
+//            case .success(let data):
+//                print("TodosVM - fetchSelectedTodos : data: \(data)")
+//            case .failure(let failure):
+//                print("TodosVM - fetchSelectedTods : failure: \(failure)")
+//            }
+//        })
         
 //        TodosAPI.deleteSelectedTodos(selectedTodoIds: [2038, 2090, 2089],
 //                                     completion: { [weak self] deletedTodos in

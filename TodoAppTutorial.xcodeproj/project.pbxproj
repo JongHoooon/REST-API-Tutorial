@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED291FA7297B084600C7EF65 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = ED291FA6297B084600C7EF65 /* RxCocoa */; };
+		ED291FA9297B084600C7EF65 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = ED291FA8297B084600C7EF65 /* RxRelay */; };
+		ED291FAB297B084600C7EF65 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ED291FAA297B084600C7EF65 /* RxSwift */; };
+		ED291FAD297B089200C7EF65 /* TodosAPI+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED291FAC297B089200C7EF65 /* TodosAPI+Rx.swift */; };
 		ED9ADA382973D1B6009371AF /* TodoAppTutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9ADA372973D1B6009371AF /* TodoAppTutorialApp.swift */; };
 		ED9ADA3C2973D1B6009371AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9ADA3B2973D1B6009371AF /* Assets.xcassets */; };
 		ED9ADA3F2973D1B6009371AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9ADA3E2973D1B6009371AF /* Preview Assets.xcassets */; };
@@ -28,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED291FAC297B089200C7EF65 /* TodosAPI+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodosAPI+Rx.swift"; sourceTree = "<group>"; };
 		ED9ADA342973D1B6009371AF /* TodoAppTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoAppTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9ADA372973D1B6009371AF /* TodoAppTutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAppTutorialApp.swift; sourceTree = "<group>"; };
 		ED9ADA3B2973D1B6009371AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED291FA9297B084600C7EF65 /* RxRelay in Frameworks */,
+				ED291FA7297B084600C7EF65 /* RxCocoa in Frameworks */,
+				ED291FAB297B084600C7EF65 /* RxSwift in Frameworks */,
 				EDD6DD4A2975BF90007724DD /* MultipartForm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +152,7 @@
 			children = (
 				EDFB79D9297450AD009C6EFA /* TodosAPI.swift */,
 				EDFA05832977D6D1000E3AA6 /* TodosAPI+Closure.swift */,
+				ED291FAC297B089200C7EF65 /* TodosAPI+Rx.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -174,6 +183,9 @@
 			name = TodoAppTutorial;
 			packageProductDependencies = (
 				EDD6DD492975BF90007724DD /* MultipartForm */,
+				ED291FA6297B084600C7EF65 /* RxCocoa */,
+				ED291FA8297B084600C7EF65 /* RxRelay */,
+				ED291FAA297B084600C7EF65 /* RxSwift */,
 			);
 			productName = TodoAppTutorial;
 			productReference = ED9ADA342973D1B6009371AF /* TodoAppTutorial.app */;
@@ -205,6 +217,7 @@
 			mainGroup = ED9ADA2B2973D1B6009371AF;
 			packageReferences = (
 				EDD6DD482975BF90007724DD /* XCRemoteSwiftPackageReference "MultipartForm" */,
+				ED291FA5297B084600C7EF65 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = ED9ADA352973D1B6009371AF /* Products */;
 			projectDirPath = "";
@@ -234,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED291FAD297B089200C7EF65 /* TodosAPI+Rx.swift in Sources */,
 				EDFB79DF297455C4009C6EFA /* TodosResponse.swift in Sources */,
 				EDFB79CF2973F4F4009C6EFA /* TodosView.swift in Sources */,
 				EDFB79D529741038009C6EFA /* UISearchBarWrapper.swift in Sources */,
@@ -453,6 +467,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		ED291FA5297B084600C7EF65 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
 		EDD6DD482975BF90007724DD /* XCRemoteSwiftPackageReference "MultipartForm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/davbeck/MultipartForm.git";
@@ -464,6 +486,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		ED291FA6297B084600C7EF65 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED291FA5297B084600C7EF65 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		ED291FA8297B084600C7EF65 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED291FA5297B084600C7EF65 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		ED291FAA297B084600C7EF65 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED291FA5297B084600C7EF65 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		EDD6DD492975BF90007724DD /* MultipartForm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EDD6DD482975BF90007724DD /* XCRemoteSwiftPackageReference "MultipartForm" */;
