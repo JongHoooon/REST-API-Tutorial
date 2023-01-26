@@ -16,19 +16,62 @@ class TodosVM: ObservableObject {
     init() {
         print("DEBUG -", #fileID, #function, #line)
         
-        TodosAPI.fetchTodosWithObservable()
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] result in
-                guard let self = self else { return }
-                
-                switch result {
-                case .failure(let failure):
-                    self.handleError(failure)
-                case .success(let response):
-                    print("TodosVM - fetchTodosWithObservable : response: \(response)")
-                }
-            })
-            .disposed(by: disposeBag)
+//        TodosAPI.fetchATodoWithObservable(id: 2111)
+//            .observe(on: MainScheduler.instance)
+//            .compactMap { $0.data }
+//            .catch({ error in
+//                
+//                print("TodosVM - catch: error: \(error)")
+//                ㄱㄷ
+//            })
+        
+        
+//            .subscribe(onNext: { [weak self] (response: BaseResponse<Todo>) in
+//                print("TodosVM - fetchATodoWithObservable : response: \(response)")
+//            }, onError: { [weak self] failure in
+//                self?.handleError(failure)
+//            })
+//            .disposed(by: disposeBag)
+//
+        
+        
+//        TodosAPI.fetchTodosWithObservable()
+//            .observe(on: MainScheduler.instance)
+//            .compactMap { $0.data }
+//            .catch({ err in
+//                print("TodosVM - catch : err: \(err)")
+//
+//
+//                return .just([])
+//            })
+//            .subscribe(onNext: { [weak self] (response: [Todo]) in
+//                print("TodosVM - fetchTodosWithObservable : response: \(response)")
+//            })
+//            .disposed(by: disposeBag)
+    
+        
+//        TodosAPI.fetchTodosWithObservable()
+//            .observe(on: MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] (response: BaseListResponse<Todo>) in
+//                print("TodosVM - fetchTodosWithObservable : response: \(response)")
+//            }, onError: { [weak self] failure in
+//                self?.handleError(failure)
+//            })
+//            .disposed(by: disposeBag)
+        
+//        TodosAPI.fetchTodosWithObservableResult()
+//            .observe(on: MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] result in
+//                guard let self = self else { return }
+//
+//                switch result {
+//                case .failure(let failure):
+//                    self.handleError(failure)
+//                case .success(let response):
+//                    print("TodosVM - fetchTodosWithObservable : response: \(response)")
+//                }
+//            })
+//            .disposed(by: disposeBag)
         
         
 //        TodosAPI.fetchSelectedTodos(selectedTodoIds: [2068], completion: { result in
