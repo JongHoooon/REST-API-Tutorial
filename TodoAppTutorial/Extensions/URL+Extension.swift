@@ -9,9 +9,9 @@ import Foundation
 
 extension URL {
     
-    init?(baesUrl: String, queryItems: [String: String]) {
+    init?(baseUrl: String, queryItems: [String: String]) {
         
-        guard var urlComponents = URLComponents(string: baesUrl) else { return nil }
+        guard var urlComponents = URLComponents(string: baseUrl) else { return nil }
         
         urlComponents.queryItems = queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
         

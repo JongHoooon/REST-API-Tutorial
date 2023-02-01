@@ -16,6 +16,23 @@ class TodosVM: ObservableObject {
     init() {
         print("DEBUG -", #fileID, #function, #line)
         
+        TodosAPI.addATodoAndFetchTodosWithObservable(title: "할일 추가하기") // [Todo]
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (response : [Todo]) in
+                print("TodosVM - addATodoAndFetchTodosWithObservable : response : \(response)")
+            }).disposed(by: disposeBag)
+        
+        
+//            .catch({ err in
+//                print("TodosVM - catch : err : \(err)")
+//                return Observable.just([])
+//            })
+//            .subscribe(onNext: { [weak self] (response: [Todo] in
+//                print("TodoVM - fetchTodosWithObservable: response: \(response)")
+//            ), onError: { } })
+        
+        
+        
 //        TodosAPI.fetchATodoWithObservable(id: 2111)
 //            .observe(on: MainScheduler.instance)
 //            .compactMap { $0.data }

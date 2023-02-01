@@ -18,7 +18,7 @@ struct BaseListResponse<T: Decodable>: Decodable {
     let data: [T]?
     let meta: Meta?
     let message: String?
-    let makeError: String
+//    let makeError: String
 }
 
 struct BaseResponse<T: Decodable>: Decodable {

@@ -138,7 +138,7 @@ extension TodosAPI {
         
 //        let urlString = baseURL + "/todos/search" + "?page=\(page)" + "&query=\(searchTerm)"
         
-        let requestUrl = URL(baesUrl: baseURL + "/todos/search",
+        let requestUrl = URL(baseUrl: baseURL + "/todos/search",
                              queryItems: ["query": searchTerm,
                                           "page": "\(page)"])
         
