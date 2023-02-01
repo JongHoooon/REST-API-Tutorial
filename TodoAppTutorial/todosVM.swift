@@ -16,11 +16,33 @@ class TodosVM: ObservableObject {
     init() {
         print("DEBUG -", #fileID, #function, #line)
         
-        TodosAPI.addATodoAndFetchTodosWithObservable(title: "할일 추가하기") // [Todo]
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] (response : [Todo]) in
-                print("TodosVM - addATodoAndFetchTodosWithObservable : response : \(response)")
-            }).disposed(by: disposeBag)
+        TodosAPI.fetchSelectedTodosWithObservable(selectedTodoIds: [2299, 2242])
+            .subscribe(onNext: { todos in
+                print("TodosVM - fetchSelectedTodosWithObservable : response : \(todos)")
+            })
+            .disposed(by: self.disposeBag)
+        
+//        TodosAPI.deleteSelectedTodosWithObservableMerge(selectedTodoIds: [2255, 2253])
+//            .subscribe(onNext: { deletedTodo in
+//                print("TodosVM - deleteSelectedTodosWithObservable : response : \(deletedTodo)")
+//            }, onError: { err in
+//                print("TodosVM - deleteSelectedTodosWithObservable : err : \(err)")
+//            })
+//            .disposed(by: self.disposeBag)
+        
+//        TodosAPI.deleteSelectedTodosWithObservable(selectedTodoIds: [2256, 2258])
+//            .subscribe(onNext: { deletedTodos in
+//                print("TodosVM - deleteSelectedTodosWithObservable : response : \(deletedTodos)")
+//            }, onError: { err in
+//                print("TodosVM - deleteSelectedTodosWithObservable : err : \(err)")
+//            })
+//            .disposed(by: self.disposeBag)
+        
+//        TodosAPI.addATodoAndFetchTodosWithObservable(title: "할일 추가하기") // [Todo]
+//            .observe(on: MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] (response : [Todo]) in
+//                print("TodosVM - addATodoAndFetchTodosWithObservable : response : \(response)")
+//            }).disposed(by: disposeBag)
         
         
 //            .catch({ err in

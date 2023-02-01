@@ -35,7 +35,7 @@ extension TodosAPI {
                 
                 print("data: \(data)")
                 print("urlResponse: \(urlResponse)")
-                     
+                
                 guard let httpResponse = urlResponse as? HTTPURLResponse else {
                     print("bad status code")
                     return .failure(ApiError.unknown(nil))
@@ -53,8 +53,8 @@ extension TodosAPI {
                 
                 do {
                     // JSON -> Struct 로 변경 즉 디코딩 즉 데이터 파싱
-                  let listResponse = try JSONDecoder().decode(BaseListResponse<Todo>.self, from: data)
-                  let todos = listResponse.data
+                    let listResponse = try JSONDecoder().decode(BaseListResponse<Todo>.self, from: data)
+                    let todos = listResponse.data
                     print("todosResponse: \(listResponse)")
                     
                     // 상태 코드는 200인데 파싱한 데이터에 따라서 에러처리
@@ -65,7 +65,7 @@ extension TodosAPI {
                     
                     return .success(listResponse)
                 } catch {
-                  // decoding error
+                    // decoding error
                     return .failure(ApiError.decodingError)
                 }
             })
@@ -94,7 +94,7 @@ extension TodosAPI {
                 
                 print("data: \(data)")
                 print("urlResponse: \(urlResponse)")
-                     
+                
                 guard let httpResponse = urlResponse as? HTTPURLResponse else {
                     print("bad status code")
                     throw ApiError.unknown(nil)
@@ -112,8 +112,8 @@ extension TodosAPI {
                 
                 do {
                     // JSON -> Struct 로 변경 즉 디코딩 즉 데이터 파싱
-                  let listResponse = try JSONDecoder().decode(BaseListResponse<Todo>.self, from: data)
-                  let todos = listResponse.data
+                    let listResponse = try JSONDecoder().decode(BaseListResponse<Todo>.self, from: data)
+                    let todos = listResponse.data
                     print("todosResponse: \(listResponse)")
                     
                     // 상태 코드는 200인데 파싱한 데이터에 따라서 에러처리
@@ -124,7 +124,7 @@ extension TodosAPI {
                     
                     return listResponse
                 } catch {
-                  // decoding error
+                    // decoding error
                     throw ApiError.decodingError
                 }
             })
@@ -151,7 +151,7 @@ extension TodosAPI {
             .map({ (urlResponse: HTTPURLResponse, data: Data) -> BaseResponse<Todo> in
                 print("data: \(data)")
                 print("urlResponse: \(urlResponse)")
-                     
+                
                 guard let httpResponse = urlResponse as? HTTPURLResponse else {
                     print("bad status code")
                     throw ApiError.unknown(nil)
@@ -173,10 +173,10 @@ extension TodosAPI {
                 // convert data to our swift model
                 do {
                     // JSON -> Struct 로 변경 즉 디코딩 즉 데이터 파싱
-                  let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
+                    let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
                     return baseResponse
                 } catch {
-                  // decoding error
+                    // decoding error
                     throw ApiError.decodingError
                 }
                 
@@ -189,7 +189,7 @@ extension TodosAPI {
         // 1. urlRequest 를 만든다
         let requestUrl = URL(baseUrl: baseURL + "/todos/search", queryItems: ["query" : searchTerm,
                                                                               "page" : "\(page)"])
-                
+        
         guard let url = requestUrl else {
             return Observable.error(ApiError.notAllowedUrl)
         }
@@ -204,7 +204,7 @@ extension TodosAPI {
             .map { (urlResponse: HTTPURLResponse, data: Data) -> BaseListResponse<Todo> in
                 print("data: \(data)")
                 print("urlResponse: \(urlResponse)")
-                     
+                
                 guard let httpResponse = urlResponse as? HTTPURLResponse else {
                     print("bad status code")
                     throw ApiError.unknown(nil)
@@ -225,8 +225,8 @@ extension TodosAPI {
                 // convert data to our swift model
                 do {
                     // JSON -> Struct 로 변경 즉 디코딩 즉 데이터 파싱
-                  let listResponse = try JSONDecoder().decode(BaseListResponse<Todo>.self, from: data)
-                  let todos = listResponse.data
+                    let listResponse = try JSONDecoder().decode(BaseListResponse<Todo>.self, from: data)
+                    let todos = listResponse.data
                     print("todosResponse: \(listResponse)")
                     
                     // 상태 코드는 200인데 파싱한 데이터에 따라서 에러처리
@@ -237,7 +237,7 @@ extension TodosAPI {
                     
                     return listResponse
                 } catch {
-                  // decoding error
+                    // decoding error
                     throw ApiError.decodingError
                 }
             }
@@ -249,7 +249,7 @@ extension TodosAPI {
     ///   - isDone: 할일 완료여부
     ///   - completion: 응답 결과
     static func addATodoWithObservable(title: String,
-                         isDone: Bool = false) -> Observable<BaseResponse<Todo>>{
+                                       isDone: Bool = false) -> Observable<BaseResponse<Todo>>{
         
         // 1. urlRequest 를 만든다
         
@@ -280,7 +280,7 @@ extension TodosAPI {
             .map { (urlResponse: HTTPURLResponse, data: Data) -> BaseResponse<Todo> in
                 print("data: \(data)")
                 print("urlResponse: \(urlResponse)")
-                     
+                
                 guard let httpResponse = urlResponse as? HTTPURLResponse else {
                     print("bad status code")
                     throw ApiError.unknown(nil)
@@ -301,11 +301,11 @@ extension TodosAPI {
                 // convert data to our swift model
                 do {
                     // JSON -> Struct 로 변경 즉 디코딩 즉 데이터 파싱
-                  let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
+                    let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
                     
                     return baseResponse
                 } catch {
-                  // decoding error
+                    // decoding error
                     throw ApiError.decodingError
                 }
             }
@@ -317,7 +317,7 @@ extension TodosAPI {
     ///   - isDone: 할일 완료여부
     ///   - completion: 응답 결과
     static func addATodoJsonWithObservable(title: String,
-                         isDone: Bool = false) -> Observable<BaseResponse<Todo>>{
+                                           isDone: Bool = false) -> Observable<BaseResponse<Todo>>{
         
         // 1. urlRequest 를 만든다
         
@@ -350,7 +350,7 @@ extension TodosAPI {
             .map { (urlResponse: HTTPURLResponse, data: Data) -> BaseResponse<Todo> in
                 print("data: \(data)")
                 print("urlResponse: \(urlResponse)")
-                     
+                
                 guard let httpResponse = urlResponse as? HTTPURLResponse else {
                     print("bad status code")
                     throw ApiError.unknown(nil)
@@ -371,11 +371,11 @@ extension TodosAPI {
                 // convert data to our swift model
                 do {
                     // JSON -> Struct 로 변경 즉 디코딩 즉 데이터 파싱
-                  let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
+                    let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
                     
                     return baseResponse
                 } catch {
-                  // decoding error
+                    // decoding error
                     throw ApiError.decodingError
                 }
             }
@@ -388,8 +388,8 @@ extension TodosAPI {
     ///   - isDone: 완료여부
     ///   - completion: 응답결과
     static func editTodoJsonWithObservable(id: Int,
-                             title: String,
-                             isDone: Bool = false) -> Observable<BaseResponse<Todo>>{
+                                           title: String,
+                                           isDone: Bool = false) -> Observable<BaseResponse<Todo>>{
         
         // 1. urlRequest 를 만든다
         
@@ -422,7 +422,7 @@ extension TodosAPI {
             .map { (urlResponse: HTTPURLResponse, data: Data) -> BaseResponse<Todo> in
                 print("data: \(data)")
                 print("urlResponse: \(urlResponse)")
-                     
+                
                 guard let httpResponse = urlResponse as? HTTPURLResponse else {
                     print("bad status code")
                     throw ApiError.unknown(nil)
@@ -443,11 +443,11 @@ extension TodosAPI {
                 // convert data to our swift model
                 do {
                     // JSON -> Struct 로 변경 즉 디코딩 즉 데이터 파싱
-                  let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
+                    let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
                     
                     return baseResponse
                 } catch {
-                  // decoding error
+                    // decoding error
                     throw ApiError.decodingError
                 }
             }
@@ -460,8 +460,8 @@ extension TodosAPI {
     ///   - isDone: 완료여부
     ///   - completion: 응답결과
     static func editTodoWithObservable(id: Int,
-                             title: String,
-                             isDone: Bool = false) -> Observable<BaseResponse<Todo>>{
+                                       title: String,
+                                       isDone: Bool = false) -> Observable<BaseResponse<Todo>>{
         
         // 1. urlRequest 를 만든다
         
@@ -487,7 +487,7 @@ extension TodosAPI {
             .map { (urlResponse: HTTPURLResponse, data: Data) -> BaseResponse<Todo> in
                 print("data: \(data)")
                 print("urlResponse: \(urlResponse)")
-                     
+                
                 guard let httpResponse = urlResponse as? HTTPURLResponse else {
                     print("bad status code")
                     throw ApiError.unknown(nil)
@@ -508,11 +508,11 @@ extension TodosAPI {
                 // convert data to our swift model
                 do {
                     // JSON -> Struct 로 변경 즉 디코딩 즉 데이터 파싱
-                  let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
+                    let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
                     
                     return baseResponse
                 } catch {
-                  // decoding error
+                    // decoding error
                     throw ApiError.decodingError
                 }
             }
@@ -537,7 +537,7 @@ extension TodosAPI {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "DELETE"
         urlRequest.addValue("application/json", forHTTPHeaderField: "accept")
-
+        
         
         // 2. urlSession 으로 API를 호출한다
         // 3. API 호출에 대한 응답을 받는다
@@ -545,7 +545,7 @@ extension TodosAPI {
             .map { (urlResponse: HTTPURLResponse, data: Data) -> BaseResponse<Todo> in
                 print("data: \(data)")
                 print("urlResponse: \(urlResponse)")
-                     
+                
                 guard let httpResponse = urlResponse as? HTTPURLResponse else {
                     print("bad status code")
                     throw ApiError.unknown(nil)
@@ -566,11 +566,11 @@ extension TodosAPI {
                 // convert data to our swift model
                 do {
                     // JSON -> Struct 로 변경 즉 디코딩 즉 데이터 파싱
-                  let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
+                    let baseResponse = try JSONDecoder().decode(BaseResponse<Todo>.self, from: data)
                     
                     return baseResponse
                 } catch {
-                  // decoding error
+                    // decoding error
                     throw ApiError.decodingError
                 }
             }
@@ -583,19 +583,19 @@ extension TodosAPI {
     ///   - isDone:
     ///   - completion:
     static func addATodoAndFetchTodosWithObservable(title: String,
-                                      isDone: Bool = false) -> Observable<[Todo]>{
+                                                    isDone: Bool = false) -> Observable<[Todo]>{
         
         // 1
         return self.addATodoWithObservable(title: title)
-                    .flatMapLatest { _ in
-                        self.fetchTodosWithObservable()
-                    } // BaseListResponse<Todo>
-                    .compactMap{ $0.data } // [Todo]
-                    .catch({ err in
-                        print("TodosAPI - catch : err : \(err)")
-                        return Observable.just([])
-                    })
-                    .share(replay: 1)
+            .flatMapLatest { _ in
+                self.fetchTodosWithObservable()
+            } // BaseListResponse<Todo>
+            .compactMap{ $0.data } // [Todo]
+            .catch({ err in
+                print("TodosAPI - catch : err : \(err)")
+                return Observable.just([])
+            })
+                .share(replay: 1)
     }
     
     
@@ -604,41 +604,42 @@ extension TodosAPI {
     /// - Parameters:
     ///   - selectedTodoIds: 선택된 할일 아이디들
     ///   - completion: 실제 삭제가 완료된 아이디들
-    static func deleteSelectedTodosWithObservable(selectedTodoIds: [Int],
-                                    completion: @escaping ([Int]) -> Void){
+    static func deleteSelectedTodosWithObservable(selectedTodoIds: [Int]) -> Observable<[Int]> {
         
-        let group = DispatchGroup()
+        // 매개변수 배열 -> Observable 스트림 배열로 만들어준다.
         
-        // 성공적으로 삭제가 이뤄진 녀석들
-        var deletedTodoIds : [Int] = [Int]()
-        
-        selectedTodoIds.forEach { aTodoId in
-            
-            // 디스패치 그룹에 넣음
-            group.enter()
-            
-            self.deleteATodo(id: aTodoId,
-                             completion: { result in
-                switch result {
-                case .success(let response):
-                    // 삭제된 아이디를 삭제된 아이디 배열에 넣는다
-                    if let todoId = response.data?.id {
-                        deletedTodoIds.append(todoId)
-                        print("inner deleteATodo - success: \(todoId)")
-                    }
-                case .failure(let failure):
-                    print("inner deleteATodo - failure: \(failure)")
-                }
-                group.leave()
-            })// 단일 삭제 API 호출
+        let apiCallOBservables = selectedTodoIds.map { id -> Observable<Int?> in
+            return self.deleteATodoWithObservable(id: id)
+                .map { $0.data?.id } // Int?
+                .catchAndReturn(nil)
+            //                .catch { err in
+            //                    return Observable.just(nil)
+            //                }
         }
         
-        // Configure a completion callback
-        group.notify(queue: .main) {
-            // All requests completed
-            print("모든 api 완료 됨")
-            completion(deletedTodoIds)
+        return Observable.zip(apiCallOBservables)
+            .map { // Observable<[Int?]>
+                $0.compactMap { $0 }
+            }
+    }
+    
+    static func deleteSelectedTodosWithObservableMerge(selectedTodoIds: [Int]) -> Observable<Int> {
+        
+        // 매개변수 배열 -> Observable 스트림 배열로 만들어준다.
+        
+        let apiCallOBservables = selectedTodoIds.map { id -> Observable<Int?> in
+            return self.deleteATodoWithObservable(id: id)
+                .map { $0.data?.id } // Int?
+                .catchAndReturn(nil)
         }
+        
+        return Observable.merge(apiCallOBservables)
+            .compactMap { $0 }
+        
+        //        return Observable.zip(apiCallOBservables)
+        //            .map { // Observable<[Int?]>
+        //            $0.compactMap { $0 }
+        //            }
     }
     
     /// 클로져 기반 api 동시 처리
@@ -646,57 +647,15 @@ extension TodosAPI {
     /// - Parameters:
     ///   - selectedTodoIds: 선택된 할일 아이디들
     ///   - completion: 응답 결과
-    static func fetchSelectedTodosWithObservable(selectedTodoIds: [Int],
-                                    completion: @escaping (Result<[Todo], ApiError>) -> Void){
+    static func fetchSelectedTodosWithObservable(selectedTodoIds: [Int]) -> Observable<[Todo]> {
         
-        let group = DispatchGroup()
-        
-        // 가져온 할일들
-        var fetchedTodos : [Todo] = [Todo]()
-        
-        // 에러들
-        var apiErrors : [ApiError] = []
-        
-        // 응답 결과들
-        var apiResults = [Int : Result<BaseResponse<Todo>, ApiError>]()
-        
-        
-        selectedTodoIds.forEach { aTodoId in
-            
-            // 디스패치 그룹에 넣음
-            group.enter()
-            
-            self.fetchATodo(id: aTodoId,
-                             completion: { result in
-                switch result {
-                case .success(let response):
-                    // 가져온 할일을 가져온 할일 배열에 넣는다
-                    if let todo = response.data {
-                        fetchedTodos.append(todo)
-                        print("inner fetchATodo - success: \(todo)")
-                    }
-                case .failure(let failure):
-                    apiErrors.append(failure)
-                    print("inner fetchATodo - failure: \(failure)")
-                }
-                group.leave()
-            })// 단일 할일 조회 API 호출
+        let apiCallObservables = selectedTodoIds.map { id -> Observable<Todo?> in
+            return self.fetchATodoWithObservable(id: id)
+                .map { $0.data }
+                .catchAndReturn(nil)
         }
         
-        // Configure a completion callback
-        group.notify(queue: .main) {
-            // All requests completed
-            print("모든 api 완료 됨")
-            
-            // 만약 에러가 있다면 에러 올려주기
-            if !apiErrors.isEmpty {
-                if let firstError = apiErrors.first {
-                    completion(.failure(firstError))
-                    return
-                }
-            }
-            
-            completion(.success(fetchedTodos))
-        }
+        return Observable.zip(apiCallObservables)
+            .map { $0.compactMap { $0 } }
     }
 }
