@@ -13,15 +13,72 @@ class TodosVM: ObservableObject {
     
     var disposeBag = DisposeBag()
     
+    var subscriptions = Set<AnyCancellable>()
+    
     init() {
         print("DEBUG -", #fileID, #function, #line)
         
-        TodosAPI.fetchSelectedTodosWithObservable(selectedTodoIds: [2299, 2242])
-            .subscribe(onNext: { todos in
-                print("TodosVM - fetchSelectedTodosWithObservable : response : \(todos)")
+        TodosAPI.deleteSelectedTodosWithPublisherZip(selectedTodoIds: [2342, 2343, 2344])
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .failure(let failure):
+                    self.handleError(failure)
+                case .finished:
+                    print("TodosVM - finished")
+                }
+            }, receiveValue: { response in
+                print("TodosVM - response: \(response)")
             })
-            .disposed(by: self.disposeBag)
+            .store(in: &subscriptions)
         
+//        TodosAPI.addATodoAndFetchTodosWithPublisherNoError(title: "추추추ㄹㅇㄹㄹㅇ가")
+//            .sink(receiveCompletion: { [weak self] completion in
+//                guard let self = self else { return }
+//                switch completion {
+//                case .failure(let failure):
+//                    self.handleError(failure)
+//                case .finished:
+//                    print("TodosVM - finished")
+//                }
+//            }, receiveValue: { response in
+//                print("TodosVM - response: \(response)")
+//            })
+//            .store(in: &subscriptions)
+        
+//        TodosAPI.fetchTodosWithPublisher()
+//            .sink(receiveCompletion: { [weak self] completion in
+//                guard let self = self else { return }
+//
+//                switch completion {
+//                case .failure(let failure):
+//                    self.handleError(failure)
+//                case .finished:
+//                    print("TodosVM - finished")
+//                }
+//            }, receiveValue: { response in
+//                print("TodosVM - response: \(response)")
+//            })
+//            .store(in: &subscriptions)
+        
+        
+//            .sink { response in
+//                switch result {
+//                case .failure(let failure):
+//                    self.handleError(failure)
+//                case .success(let baseListTodoResponse):
+//                    print("TodosVM - fetchTodosWithPublisherResult : baseListTodoResponse : \(baseListTodoResponse)")
+//                }
+//            }
+//            .store(in: &subscriptions)
+        
+        
+//        TodosAPI.fetchSelectedTodosWithObservable(selectedTodoIds: [2299, 2242])
+//            .subscribe(onNext: { todos in
+//                print("TodosVM - fetchSelectedTodosWithObservable : response : \(todos)")
+//            })
+//            .disposed(by: self.disposeBag)
+//
 //        TodosAPI.deleteSelectedTodosWithObservableMerge(selectedTodoIds: [2255, 2253])
 //            .subscribe(onNext: { deletedTodo in
 //                print("TodosVM - deleteSelectedTodosWithObservable : response : \(deletedTodo)")
@@ -228,6 +285,8 @@ class TodosVM: ObservableObject {
                 print("인증 안됨")
             case .badStatus(let code):
                 print("bad status \(code)")
+            case .decodingError:
+                print("DEBUG - Decoding Error, \(#fileID), \(#function), \(#line)")
             default:
                 print("default")
             }

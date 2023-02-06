@@ -53,3 +53,4 @@ struct Meta: Codable {
         case to, total
     }
 }
+
