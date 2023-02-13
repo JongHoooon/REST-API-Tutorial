@@ -18,6 +18,12 @@ class TodosVM: ObservableObject {
     init() {
         print("DEBUG -", #fileID, #function, #line)
         
+        Task {
+            let response = await TodosAPI.fetchTodosWithAsync()
+            print("fetchTodosWithAsyncResult: response \(response)")
+        }
+        
+        
         TodosAPI.deleteSelectedTodosWithPublisherZip(selectedTodoIds: [2342, 2343, 2344])
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return }
