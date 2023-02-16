@@ -19,7 +19,7 @@ class TodosVM: ObservableObject {
         print("DEBUG -", #fileID, #function, #line)
         
         Task {
-            let response = await TodosAPI.fetchTodosWithAsync()
+            let response = try await TodosAPI.fetchTodosWithAsync()
             print("fetchTodosWithAsyncResult: response \(response)")
         }
         
